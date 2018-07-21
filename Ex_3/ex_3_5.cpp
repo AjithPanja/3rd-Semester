@@ -51,9 +51,9 @@ int main()
 {
 
  int choice, flag=1, value;
- while( flag == 1)
+ while(flag == 1)
  {
- cout<<"\n1.PUSH 2.POP 3.DISPLAY_STACK 4.EXIT\n";
+ cout<<"\n1.PUSH 2.POP 3.DISPLAY 4.EXIT\n";
  cin>>choice;
  switch (choice)
  {
