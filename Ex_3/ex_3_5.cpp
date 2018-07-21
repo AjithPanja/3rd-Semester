@@ -49,7 +49,6 @@ void display()
     cout<<A[i]<<" ";
   }
    cout<<"\n";
-
   }
 }
 int main()
