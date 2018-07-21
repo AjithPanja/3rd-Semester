@@ -31,7 +31,7 @@ void pop()
   cout << A[top--] << " is popped" << endl;
 }
 
-void displayStack()
+void display()
 {
   if(isempty())
  {
@@ -63,7 +63,7 @@ int main()
          break;
  case 2: pop();
          break;
- case 3: displayStack();
+ case 3: display();
          break;
  case 4: flag = 0;
          break;
