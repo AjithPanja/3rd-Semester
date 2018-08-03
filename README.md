@@ -1,4 +1,7 @@
-# Pds-2-Lab
-Code-hub for the Programming Data Structures -2 LAB <br />
-All the references are mostly taken from Codearchery <br />
-[CodeArchery](https://www.youtube.com/channel/UCA2YOQHuWzVn1TWmlK5XYxA)
+# Ex_5
+1. Operator Overloading <br />
+2. Single Inheritance <br />
+3. Multi-level Inheritance <br />
+4. Multiple Inheritance <br />
+5. Hierarchical Inheritance <br />
+6. Hybrid Inheritance <br />
