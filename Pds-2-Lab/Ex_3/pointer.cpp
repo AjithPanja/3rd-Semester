@@ -6,13 +6,16 @@ public :
     int a;
     Demo()
     {
-
     }
     Demo(int n)
     {
         a = n;
     }
     void display();
+    int su()
+    {
+        return a;
+    }
 };
 void Demo::display()
 {
@@ -31,5 +34,6 @@ int main()
     d.display();
     dp->*p = 20;//Since *dp is refering to object d, assinging also works this way
     dp->display();
+    int (Demo::*q)() = &Demo::su; // assinging pointer to method in a class
+    cout << (d.*q)();
 }
-
