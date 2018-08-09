@@ -34,6 +34,6 @@ int main()
     d.display();
     dp->*p = 20;//Since *dp is refering to object d, assinging also works this way
     dp->display();
-    int (Demo::*q)() = &Demo::su; // assinging pointer to method in a class
-    cout << (d.*q)();
+    void (Demo::*q)() = &Demo::display; // assinging pointer to method in a class
+    (d.*q)();
 }
