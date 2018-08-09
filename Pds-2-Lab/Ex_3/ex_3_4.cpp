@@ -15,7 +15,7 @@ void Larger :: read()
 }
 void Larger :: display()
 {
-    cout << "Larger value is :" << large();
+    cout << "Larger value is :" << large(); //calling the method large() inside the method display()
 }
 int Larger :: large()
 {

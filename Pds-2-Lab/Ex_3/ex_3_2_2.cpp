@@ -4,31 +4,26 @@ class Two;
 class One
 {
 public:
+    int a;
     void multiply(Two);
 };
 class Two
 {
 public:
-    int a,b;
-    void display();
+    int b;
     friend void multiply(Two);
 };
-void Two :: display()
+void One :: multiply(Two t) //Type 2: multiply is the method of class One and it's declared as a friend function in class Two
 {
-    cout << "Variable 1: " <<a<< "\nVariable 2: " <<b<<endl;
-}
-void One :: multiply(Two t)
-{
-    cout << "Answer is "<< (t.a * t.b);
+    cout << "Answer is "<< (a * t.b);
 }
 int main()
 {   One x;
     Two y;
     cout << "Enter number 1 : ";
-    cin >> y.a;
+    cin >> x.a;
     cout << "Enter number 2 : ";
     cin >> y.b;
-    y.display();
     x.multiply(y);
 }
 

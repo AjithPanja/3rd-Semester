@@ -9,7 +9,7 @@ public:
         a = 0;
         b = 1;
     }
-    Demo(int x,int y)
+    Demo(int x,int y) //Paramatised Constructor
     {
         a = x;
         b = y;

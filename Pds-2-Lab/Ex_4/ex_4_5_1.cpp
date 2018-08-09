@@ -17,7 +17,7 @@ void Negative :: display()
 {
     cout << "a : " << a << " b : " << b << " c : " << c << endl;
 }
-void Negative :: operator -()
+void Negative :: operator -() //Changing the signs of the variables using unary '-'
 {
     a = -a;
     b = -b;

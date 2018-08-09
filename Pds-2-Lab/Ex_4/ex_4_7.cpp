@@ -17,7 +17,7 @@ int Add :: add()
 {
     return a+b;
 }
-int Add :: add(int x,int y)
+int Add :: add(int x,int y) //Normal function Overloading
 {
     return x+y;
 }

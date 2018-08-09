@@ -10,7 +10,7 @@ public:
         b = y;
         cout << "Hi! From Constructor" << endl;
     }
-    ~Demo()
+    ~Demo() // Destructor
     {
         cout << "Hi! From Destructor" <<endl;   // Print Statement is not needed here..but still to understand destructor, i've included the print statement...Destructor will be called for n times for n number of objects created to destroy them :)
     }

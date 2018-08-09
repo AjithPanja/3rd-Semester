@@ -19,7 +19,7 @@ void Negative :: display()
 {
     cout << "a : " << a << " b : " << b << endl;
 }
-Negative Negative :: operator +(Negative &c)
+Negative Negative :: operator +(Negative &c) //Adding objects using binary'+'
 {
     Negative temp;
     temp.a = a + c.a;

@@ -12,7 +12,7 @@ public:
         a = x;
         b = y;
     }
-    Demo (Demo &summa)
+    Demo (Demo &summa) //Copying a Constructor
     {
         a = summa.a;
         b = summa.b;

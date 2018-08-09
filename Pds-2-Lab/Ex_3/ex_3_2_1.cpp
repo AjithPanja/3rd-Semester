@@ -23,7 +23,7 @@ void Two :: display()
 {
     cout << "Variable 2: " <<b<<endl;
 }
-void multiply(One o,Two t)
+void multiply(One o,Two t)      //Type 1:method multiply is the friend function of both the classes
 {
     cout << "Answer is "<< (o.a * t.b);
 }
