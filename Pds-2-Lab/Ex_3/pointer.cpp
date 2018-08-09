@@ -12,10 +12,6 @@ public :
         a = n;
     }
     void display();
-    int su()
-    {
-        return a;
-    }
 };
 void Demo::display()
 {
