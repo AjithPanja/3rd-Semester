@@ -13,13 +13,13 @@ public:
         b = y;
     }
     void display();
-    Negative operator +(Negative);
+    Negative operator +(Negative &);
 };
 void Negative :: display()
 {
     cout << "a : " << a << " b : " << b << endl;
 }
-Negative Negative :: operator +(Negative c)
+Negative Negative :: operator +(Negative &c)
 {
     Negative temp;
     temp.a = a + c.a;
