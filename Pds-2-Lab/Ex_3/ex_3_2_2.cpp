@@ -6,16 +6,25 @@ class One
 public:
     int a;
     void multiply(Two);
+    void display()
+{
+    cout << "Variable 1: " <<a<<endl;
+}
 };
 class Two
 {
 public:
     int b;
-    friend void multiply(Two);
+    void display();
+    friend void One::multiply(Two);
 };
-void One :: multiply(Two t) //Type 2: multiply is the method of class One and it's declared as a friend function in class Two
+void One::multiply(Two t)
 {
     cout << "Answer is "<< (a * t.b);
+}
+void Two :: display()
+{
+    cout << "Variable 2: " <<b<<endl;
 }
 int main()
 {   One x;
@@ -24,6 +33,8 @@ int main()
     cin >> x.a;
     cout << "Enter number 2 : ";
     cin >> y.b;
+    x.display();
+    y.display();
     x.multiply(y);
 }
 
