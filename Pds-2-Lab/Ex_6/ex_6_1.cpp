@@ -36,6 +36,6 @@ int main()
     Child c;
     p = &c;
     p->display(); //without the virtual keyword in the Parent class's display method, the ocompiler will get the Parent's display..this is called Early Binding
-    p->area();
+    p->sum();
     return 0;
 }
