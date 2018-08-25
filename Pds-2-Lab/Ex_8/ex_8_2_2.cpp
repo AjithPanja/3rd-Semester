@@ -24,7 +24,8 @@ int main()
     cout << "The elements in the Answer Array C : ";
     for(int i=0;i<n;i++)
     {
-        cout << c[i] << " " ;
+        cout << * r<< " " ;
+        r++;
     }
     return 0;
 }
