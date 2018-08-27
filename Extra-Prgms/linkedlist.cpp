@@ -5,10 +5,10 @@ struct node
     int data;
     struct node *next;
 };
-node* head = NULL;
+node *head = NULL;
 node* createNode(int x)
 {
-    node* temp;
+    node *temp;
     temp = new node;
     temp->data = x;
     temp->next = NULL;
@@ -27,7 +27,7 @@ bool isempty()
 }
 void insertNode()
 {
-    node* temp;
+    node *temp;
     int x;
     cout << "Enter the Element :";
     cin >> x;
@@ -38,7 +38,7 @@ void insertNode()
     }
     else
     {
-        node* traverse = head;
+        node *traverse = head;
         while(traverse->next!=NULL)
         {
             traverse = traverse->next;
@@ -49,10 +49,10 @@ void insertNode()
 void deleteNode()
 {
     int del;
-    node* temp = NULL;
+    node *temp = NULL;
     cout << "Enter the Element :";
     cin >> del;
-    node* traverse = head;
+    node *traverse = head;
     if(isempty())
     {
         cout << "List Empty " << endl;
@@ -64,8 +64,8 @@ void deleteNode()
     }
     else
     {
-        node* traverse = head;
-        node* previous = NULL;
+        node *traverse = head;
+        node *previous = NULL;
         while(traverse!=NULL)
         {
             if(traverse->data==del)
@@ -105,7 +105,7 @@ void display()
     }
     else
     {
-        node* traverse = head;
+        node *traverse = head;
         while(traverse!=NULL)
         {
             cout << traverse->data << " ";
