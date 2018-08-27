@@ -38,12 +38,12 @@ void insertNode()
     }
     else
     {
-    node* traverse = head;
-    while(traverse->next!=NULL)
-    {
-        traverse = traverse->next;
-    }
-    traverse->next = temp;
+        node* traverse = head;
+        while(traverse->next!=NULL)
+        {
+            traverse = traverse->next;
+        }
+        traverse->next = temp;
     }
 }
 void deleteNode()
@@ -67,24 +67,24 @@ void deleteNode()
         node* traverse = head;
         node* previous = NULL;
         while(traverse!=NULL)
-    {
-        if(traverse->data==del)
         {
-            temp = traverse;
-            if(traverse->next==NULL)
+            if(traverse->data==del)
             {
-                previous->next = NULL;
-                break;
+                temp = traverse;
+                if(traverse->next==NULL)
+                {
+                    previous->next = NULL;
+                    break;
+                }
+                else if(traverse->next)
+                {
+                    previous->next = traverse->next;
+                    break;
+                }
             }
-            else if(traverse->next)
-            {
-                previous->next = traverse->next;
-                break;
-            }
+            previous = traverse;
+            traverse = traverse->next;
         }
-        previous = traverse;
-        traverse = traverse->next;
-    }
     }
     if(temp)
     {
@@ -95,7 +95,6 @@ void deleteNode()
         cout << "Such Element doesn't exist " << endl;
     }
     free(temp);
-
 }
 void display()
 {
@@ -106,12 +105,12 @@ void display()
     }
     else
     {
-    node* traverse = head;
-    while(traverse!=NULL)
-    {
-        cout << traverse->data << " ";
-        traverse = traverse->next;
-    }
+        node* traverse = head;
+        while(traverse!=NULL)
+        {
+            cout << traverse->data << " ";
+            traverse = traverse->next;
+        }
     }
 }
 int main()
@@ -120,10 +119,10 @@ int main()
     int choice;
     while(flag)
     {
-    cout << "\n1.Insert 2.Delete 3.Display 4.Exit\nEnter Choice :";
-    cin >> choice;
-    switch(choice)
-    {
+        cout << "\n1.Insert 2.Delete 3.Display 4.Exit\nEnter Choice :";
+        cin >> choice;
+        switch(choice)
+        {
         case 1:
         {
             insertNode();
@@ -144,6 +143,10 @@ int main()
             flag = false;
             break;
         }
-    }
+        default:
+        {
+            cout << "Enter correct choice." << endl;
+        }
+        }
     }
 }
