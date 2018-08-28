@@ -96,9 +96,31 @@ void deleteNode()
     }
     free(temp);
 }
+void reverseList()
+{
+    if(isempty())
+    {
+        cout << "List Empty " << endl;
+    }
+    else
+    {
+        node *current,*prev,*nextnode;
+        current = head;
+        prev = NULL;
+        nextnode = NULL;
+        while(current!=NULL)
+        {
+            nextnode = current->next;
+            current->next = prev;
+            prev = current;
+            current = nextnode;
+        }
+        head = prev;
+        cout << "Successfully Reversed " << endl;
+    }
+}
 void display()
 {
-
     if(isempty())
     {
         cout << "List Empty " << endl;
@@ -119,7 +141,7 @@ int main()
     int choice;
     while(flag)
     {
-        cout << "\n1.Insert 2.Delete 3.Display 4.Exit\nEnter Choice :";
+        cout << "\n1.Insert 2.Delete 3.Reverse 4.Display 5.Exit\nEnter Choice :";
         cin >> choice;
         switch(choice)
         {
@@ -135,10 +157,15 @@ int main()
         }
         case 3:
         {
-            display();
+            reverseList();
             break;
         }
         case 4:
+        {
+            display();
+            break;
+        }
+        case 5:
         {
             flag = false;
             break;
