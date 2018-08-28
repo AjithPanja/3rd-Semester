@@ -119,6 +119,25 @@ void reverseList()
         cout << "Successfully Reversed " << endl;
     }
 }
+void reverseRecur(struct node *p)
+{
+    if(isempty())
+    {
+        cout << "List Empty " << endl;
+        return;
+    }
+    else
+    {
+        if(p->next==NULL)
+        {
+            head = p;
+            return;
+        }
+        reverseRecur(p->next);
+        p->next->next = p;
+        p->next = NULL;
+    }
+}
 void display()
 {
     if(isempty())
@@ -141,7 +160,7 @@ int main()
     int choice;
     while(flag)
     {
-        cout << "\n1.Insert 2.Delete 3.Reverse 4.Display 5.Exit\nEnter Choice :";
+        cout << "\n1.Insert 2.Delete 3.Reverse 4.Reverse using Recursion 5.Display 6.Exit\nEnter Choice :";
         cin >> choice;
         switch(choice)
         {
@@ -162,10 +181,15 @@ int main()
         }
         case 4:
         {
-            display();
+            reverseRecur(head);
             break;
         }
         case 5:
+        {
+            display();
+            break;
+        }
+        case 6:
         {
             flag = false;
             break;
