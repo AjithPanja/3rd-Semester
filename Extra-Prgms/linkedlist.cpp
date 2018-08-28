@@ -154,13 +154,29 @@ void display()
         }
     }
 }
+void displayRecur(struct node *p)
+{
+    if(isempty())
+    {
+        cout << "List Empty " << endl;
+    }
+    else
+    {
+        if(p==NULL)
+        {
+            return;
+        }
+        cout << p->data << " ";
+        displayRecur(p->next);
+    }
+}
 int main()
 {
     bool flag = true;
     int choice;
     while(flag)
     {
-        cout << "\n1.Insert 2.Delete 3.Reverse 4.Reverse using Recursion 5.Display 6.Exit\nEnter Choice :";
+        cout << "\n1.Insert 2.Delete 3.Reverse 4.Reverse using Recursion 5.Display 6.Display using recursion 7.Exit\nEnter Choice :";
         cin >> choice;
         switch(choice)
         {
@@ -191,6 +207,11 @@ int main()
         }
         case 6:
         {
+            displayRecur(head);
+            break;
+        }
+        case 7:
+        {
             flag = false;
             break;
         }
@@ -201,3 +222,4 @@ int main()
         }
     }
 }
+
