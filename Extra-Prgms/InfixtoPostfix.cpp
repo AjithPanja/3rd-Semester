@@ -12,7 +12,6 @@ int main()
     getline(cin,exp);
     int l = exp.length();
     int choice;
-
     char *e = &exp[0];
     while(l!=0)
     {
@@ -32,14 +31,28 @@ int main()
             }
             else
             {
-                while(!S.empty()&&precedence(S.top(),*e))
+                while(!S.empty()&& S.top()!= '(' && precedence(S.top(),*e))
                 {
                     result = result + S.top();
                     S.pop();
                 }
                 S.push(*e);
-                break;
             }
+            break;
+        }
+        case 3:
+        {
+            while(!S.empty())
+            {
+                if(S.top()=='(')
+                {
+                    S.pop();
+                    break;
+                }
+                result = result + S.top();
+                S.pop();
+            }
+            break;
         }
         }
         e++;
@@ -57,6 +70,10 @@ int check(char ch)
     if((ch>='0'&&ch<='9')||(ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z'))
     {
         return 1;
+    }
+    else if(ch==')')
+    {
+        return 3;
     }
     else
     {
