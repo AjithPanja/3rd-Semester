@@ -10,7 +10,6 @@
 #include<string>
 #include<algorithm>
 using namespace std;
-int check(char ch);
 bool precedence(char ch1,char ch2);
 int pre(char ch);
 int main()
@@ -75,21 +74,6 @@ int main()
     }
     reverse(result.begin(),result.end());
     cout << result;
-}
-int check(char ch)
-{
-    if((ch>='0'&&ch<='9')||(ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z'))
-    {
-        return 1;
-    }
-    else if(ch==')')
-    {
-        return 3;
-    }
-    else
-    {
-        return 2;
-    }
 }
 bool precedence(char ch1,char ch2)
 {
