@@ -2,7 +2,6 @@
 #include<stack>
 #include<string>
 using namespace std;
-int check(char ch);
 bool precedence(char ch1,char ch2);
 int pre(char ch);
 int main()
@@ -15,32 +14,15 @@ int main()
     char *e = &exp[0];
     while(l!=0)
     {
-        choice = check(*e);
-        switch(choice)
-        {
-        case 1:
+        if(isalpha(*e)||isdigit(*e))
         {
             result = result + *e;
-            break;
         }
-        case 2:
+        else if(*e=='(')
         {
-            if(S.empty())
-            {
-                S.push(*e);
-            }
-            else
-            {
-                while(!S.empty()&& S.top()!= '(' && precedence(S.top(),*e))
-                {
-                    result = result + S.top();
-                    S.pop();
-                }
-                S.push(*e);
-            }
-            break;
+            S.push(*e);
         }
-        case 3:
+        else if(*e==')')
         {
             while(!S.empty())
             {
@@ -52,8 +34,15 @@ int main()
                 result = result + S.top();
                 S.pop();
             }
-            break;
         }
+        else
+        {
+            while(!S.empty()&& S.top()!= '(' && precedence(S.top(),*e))
+            {
+                result = result + S.top();
+                S.pop();
+            }
+            S.push(*e);
         }
         e++;
         l--;
@@ -64,21 +53,6 @@ int main()
         S.pop();
     }
     cout << result;
-}
-int check(char ch)
-{
-    if((ch>='0'&&ch<='9')||(ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z'))
-    {
-        return 1;
-    }
-    else if(ch==')')
-    {
-        return 3;
-    }
-    else
-    {
-        return 2;
-    }
 }
 bool precedence(char ch1,char ch2)
 {

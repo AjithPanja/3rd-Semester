@@ -21,46 +21,29 @@ int main()
     int l = exp.length();
     int choice;
     reverse(exp.begin(),exp.end());
-    for(int i =0;i<l;i++)
+    for(int i =0; i<l; i++)
     {
-    if(exp[i]==')')
-    {
-    exp[i] = '(';
-    }
-    else if(exp[i]=='(')
-    {
-    exp[i] = ')';
-    }
+        if(exp[i]==')')
+        {
+            exp[i] = '(';
+        }
+        else if(exp[i]=='(')
+        {
+            exp[i] = ')';
+        }
     }
     char *e = &exp[0];
     while(l!=0)
     {
-        choice = check(*e);
-        switch(choice)
-        {
-        case 1:
+        if(isalpha(*e)||isdigit(*e))
         {
             result = result + *e;
-            break;
         }
-        case 2:
+        else if(*e=='(')
         {
-            if(S.empty())
-            {
-                S.push(*e);
-            }
-            else
-            {
-                while(!S.empty()&& S.top()!= '(' && precedence(S.top(),*e))
-                {
-                    result = result + S.top();
-                    S.pop();
-                }
-                S.push(*e);
-            }
-            break;
+            S.push(*e);
         }
-        case 3:
+        else if(*e==')')
         {
             while(!S.empty())
             {
@@ -72,8 +55,15 @@ int main()
                 result = result + S.top();
                 S.pop();
             }
-            break;
         }
+        else
+        {
+            while(!S.empty()&& S.top()!= '(' && precedence(S.top(),*e))
+            {
+                result = result + S.top();
+                S.pop();
+            }
+            S.push(*e);
         }
         e++;
         l--;
