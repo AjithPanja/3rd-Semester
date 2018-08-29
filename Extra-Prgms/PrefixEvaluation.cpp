@@ -1,7 +1,7 @@
 /*
 To Evaluate Prefix Expression
 1)Reverse the Expression
-2)Proceed normally like prefix and Remeber to change op1 and op2 because in Prefix First popped element will be Operand 1
+2)Proceed normally like postfix and Remeber to change op1 and op2 because in Prefix First popped element will be Operand 1
 rather than Postfix where First popped element is op2 (ie., Operand 2)
 3)Hence the Answer
 */
