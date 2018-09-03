@@ -86,7 +86,7 @@ void deleteNode()
     {
         cout << "Such Element doesn't exist " << endl;
     }
-    free(temp);
+    delete(temp);
 }
 void reverseList()
 {
