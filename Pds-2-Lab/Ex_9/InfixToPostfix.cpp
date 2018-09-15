@@ -29,7 +29,7 @@ bool isempty()
         return false;
     }
 }
-void insertNode(char x)
+void push(char x)
 {
     node *temp;
     temp = createNode(x);
@@ -43,7 +43,7 @@ void insertNode(char x)
         head = temp;
     }
 }
-void deleteNode()
+void pop()
 {
     int del;
     node *temp = NULL;
@@ -84,7 +84,7 @@ int main()
         }
         else if(*e=='(')
         {
-            insertNode(*e);
+            push(*e);
         }
         else if(*e==')')
         {
@@ -92,11 +92,11 @@ int main()
             {
                 if(peek()=='(')
                 {
-                    deleteNode();
+                    pop();
                     break;
                 }
                 result = result + peek();
-                deleteNode();
+                pop();
             }
         }
         else
@@ -104,9 +104,9 @@ int main()
             while(head!=NULL && peek()!= '(' && precedence(peek(),*e))
             {
                 result = result + peek();
-                deleteNode();
+                pop();
             }
-            insertNode(*e);
+            push(*e);
         }
         e++;
         l--;
@@ -114,7 +114,7 @@ int main()
     while(head!=NULL)
     {
         result = result + peek();
-        deleteNode();
+        pop();
     }
     cout << result;
 }
