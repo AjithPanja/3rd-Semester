@@ -59,7 +59,6 @@ void insertNode()
 }
 void deleteNode()
 {
-    int del;
     node *temp = NULL;
     node *traverse = frontt;
     if(isempty())
