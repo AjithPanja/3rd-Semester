@@ -7,7 +7,6 @@ struct Node
     int data,height;
     Node *left;
     Node *right;
-    Node *next;
 };
 
 int arr[100],k=0,z=0;
