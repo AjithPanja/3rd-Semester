@@ -20,7 +20,7 @@ void heapify(int i)
         heapify(smallest);
     }
 }
-void push(int x)
+void enqueue(int x)
 {
     arr[count++] = x;
     int i;
@@ -29,7 +29,7 @@ void push(int x)
         heapify(i);
     }
 }
-void pop()
+void dequeue()
 {
     int i =count-1;
     if(count!=0)
@@ -72,12 +72,12 @@ int main()
         {
             cout << "Enter the value to be inserted:";
             cin >> n;
-            push(n);
+            enqueue(n);
             break;
         }
         case 2:
         {
-            pop();
+            dequeue();
             break;
         }
         case 3:
