@@ -1,170 +1,70 @@
-//Not an 100% correct Max Heap implementation but stills this code manages to build max_heap and pops hightest element
 #include<iostream>
 using namespace std;
-
-struct Node
+int arr[100],count=0;
+void heapify(int i)
 {
-    int data,height;
-    Node *left;
-    Node *right;
-};
-
-int arr[100],k=0,z=0;
-
-int height(struct Node *N)
-{
-    if (N == NULL)
-        return -1;
-    return N->height;
+    int smallest = i;
+    int l = (2*i)+1;
+    int r = (2*i)+2;
+    if(l<count&&arr[l]<arr[smallest])
+    {
+        smallest = l;
+    }
+    if(r<count&&arr[r]<arr[smallest])
+    {
+        smallest = r;
+    }
+    if(smallest!=i)
+    {
+        swap(arr[i],arr[smallest]);
+        heapify(smallest);
+    }
 }
-
-int max(int a, int b)
+void push(int x)
 {
-    return (a > b)? a : b;
+    arr[count++] = x;
+    int i;
+    for(i=(count/2)-1;i>=0;i--)
+    {
+        heapify(i);
+    }
 }
-
-struct Node* newNode(int data)
+void pop()
 {
-    Node *temp = new Node;
-    temp->data = data;
-    temp->left   = NULL;
-    temp->right  = NULL;
-    temp->height = 0;
-    return(temp);
-}
-
-struct Node* rightRotate(struct Node *y)
-{
-    Node *x = y->left;
-    Node *T2 = x->right;
-    x->right = y;
-    y->left = T2;
-    y->height = max(height(y->left), height(y->right)) + 1;
-    x->height = max(height(x->left), height(x->right)) + 1;
-    return x;
-}
-
-struct Node* leftRotate(struct Node *x)
-{
-    Node *y = x->right;
-    Node *T2 = y->left;
-    y->left = x;
-    x->right = T2;
-    x->height = max(height(x->left), height(x->right)) + 1;
-    y->height = max(height(y->left), height(y->right)) + 1;
-    return y;
-}
-
-int getBalance(struct Node *N)
-{
-    if (N == NULL)
-        return 0;
-    return height(N->left) - height(N->right);
-}
-
-struct Node* insert(struct Node* node, int data)
-{
-
-    if (node == NULL)
-        return(newNode(data));
-
-    if (data < node->data)
-        node->left  = insert(node->left, data);
-    else if (data > node->data)
-        node->right = insert(node->right, data);
+    int i =count-1;
+    if(count!=0)
+    {
+    cout << arr[0];
+    swap(arr[0],arr[i]);
+    count--;
+    heapify(0);
+    }
     else
-        return node;
-
-    node->height = 1 + max(height(node->left),
-                           height(node->right));
-
-    int balance = getBalance(node);
-
-    // Left Left Case
-    if (balance > 1 && data < node->left->data)
-        return rightRotate(node);
-
-    // Right Right Case
-    if (balance < -1 && data > node->right->data)
-        return leftRotate(node);
-
-    // Left Right Case
-    if (balance > 1 && data > node->left->data)
     {
-        node->left =  leftRotate(node->left);
-        return rightRotate(node);
+        cout << "Queue Empty!!!" << endl;
     }
-
-    // Right Left Case
-    if (balance < -1 && data < node->right->data)
-    {
-        node->right = rightRotate(node->right);
-        return leftRotate(node);
-    }
-
-    return node;
 }
-
-void inOrder(struct Node *root)
+void display()
 {
-    if(root != NULL)
+    if(count==0)
     {
-        inOrder(root->left);
-        arr[k++] = root->data;
-        inOrder(root->right);
+        cout << "Queue Empty!!!" << endl;
+    }
+    else
+    {
+        for(int i =0;i<count;i++)
+        {
+            cout << arr[i] << " ";
+        }
     }
 }
-
-void postOrder(struct Node *root)
-{
-    if(root != NULL)
-    {
-        postOrder(root->left);
-        postOrder(root->right);
-        root->data=arr[z++];
-    }
-}
-
-struct Node *pop(struct Node *T)
-{
-    if(T==NULL)
-    {
-        return T;
-    }
-    else if(T->left==NULL&&T->right==NULL)
-    {
-        Node *temp = T;
-        T = NULL;
-        delete(temp);
-    }
-    else if(T->right==NULL&& T->left!=NULL)
-    {
-        Node *temp = T;
-        T = T->left;
-        delete(temp);
-    }
-    else if(T->left==NULL&& T->right!=NULL)
-    {
-        Node *temp = T;
-        T = T->right;
-        delete(temp);
-    }
-    else if(T->left!=NULL && T->right!=NULL)
-    {
-        T->data = T->right->data;
-        T->right = pop(T->right);
-    }
-    return T;
-}
-
 int main()
 {
-    struct Node *root = NULL;
+    int choice,n;
     bool flag = true;
-    int choice,n,time = 1;
     while(flag)
     {
-        cout << "\n1.Insert 2.Pop_High_Priority 3.Exit \nEnter Choice :";
+        cout << "\n1.Insert 2.Delete 3.Display 4.Exit\nEnter Choice :";
         cin >> choice;
         switch(choice)
         {
@@ -172,29 +72,20 @@ int main()
         {
             cout << "Enter the value to be inserted:";
             cin >> n;
-            root = insert(root,n);
+            push(n);
             break;
         }
         case 2:
         {
-            if(time==1)
-            {
-                inOrder(root);
-                postOrder(root);
-                time++;
-            }
-            if(root==NULL)
-            {
-                cout << "Empty !";
-            }
-            else
-            {
-                cout << root->data << " is popped !";
-                root = pop(root);
-            }
+            pop();
             break;
         }
         case 3:
+        {
+            display();
+            break;
+        }
+        case 4:
         {
             flag = false;
             break;
@@ -205,4 +96,5 @@ int main()
         }
         }
     }
+    return 0;
 }
